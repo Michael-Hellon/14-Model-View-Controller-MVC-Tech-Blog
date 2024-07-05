@@ -1,13 +1,41 @@
 const User = require('./User');
-const Project = require('./Posts');
+const Post = require('./Post');
+const Comment = require('./Comment');
 
-User.hasMany(Project, {
+// Referenced MOD 13 One-to-one, One-to-Many exercise
+
+// Users have many Posts
+User.hasMany(Post, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
 
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+// likewise, User has many comment
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
 });
 
-module.exports = { User, Project };
+// Post belongs to User
+Post.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+  });
+
+// Post has many comments
+Post.hasMany(Comment, {
+  foreignKey: 'post_id',
+  onDelete: 'CASCADE'
+  });
+
+// Post belongs to User
+Comment.belongsTo(Post, {
+  foreignKey: 'post_id',
+
+  });
+// Post belongs to User
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+  });
+
+module.exports = { User, Post };
