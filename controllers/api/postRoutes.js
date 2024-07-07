@@ -11,9 +11,31 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newPost);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
+
+// update a post
+router.put('/:id',withAuth, async (req, res) => {
+  try {
+  // update post data
+    const updatePost = await Post.update(req.body, {
+    where: {
+      id: req.params.id,
+      },
+    });
+
+    if (updatePost) {
+      res.status(200).json(newPost);
+    } else {
+      res.status(404).json({message: "No Post found, trey again."});
+    }
+
+  } catch (err) {
+    res.status(500).json(err);
+  } 
+});
+
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {

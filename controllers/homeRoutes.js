@@ -2,10 +2,11 @@ const router = require('express').Router();
 const { Post, Comment, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+// similar to mod 13 - get all post
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
+    const postDataData = await Post.findAll({
       include: [
         {
           model: User,
@@ -27,6 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// similar to mod 13 - get one post
 router.get('/project/:id', async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
@@ -69,6 +71,7 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+// route to login
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
