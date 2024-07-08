@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all posts
@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -21,12 +21,12 @@ router.get('/', withAuth, async (req, res) => {
 // create new post
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.create({
+    const postData = await Post.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -36,14 +36,14 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id',withAuth, async (req, res) => {
   try {
   // update post data
-    const updatePost = await Post.update(req.body, {
+    const postData = await Post.update(req.body, {
     where: {
       id: req.params.id,
       },
     });
 
-    if (updatePost) {
-      res.status(200).json(newPost);
+    if (postData) {
+      res.status(200).json(postData);
     } else {
       res.status(404).json({message: "No Post found, trey again."});
     }

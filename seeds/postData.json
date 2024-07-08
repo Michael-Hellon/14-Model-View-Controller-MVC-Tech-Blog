@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Growing Zucchini",
+        "content": "blah blah blah",
+        "user_id" : 1 
+    },
+    {
+        "title": "Brewing Cider",
+        "content": "Clean everything really well. blah blah blah",
+        "user_id" : 2 
+    },
+    {
+        "title": "Building a Deck",
+        "content": "First, make sure you get a permit blah blah blah",
+        "user_id" : 3
+    }
+
+
+]
