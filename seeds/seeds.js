@@ -1,19 +1,24 @@
 const sequelize = require('../config/connection');
-// const { User } = require('../models');
+const { User, Post } = require('../models');
 
-const seedUserData = require('./userData');
-const seedPostData = require('./postData');
-const seedCommentData = require('./userData');
-
-// Don't need a postData, won't be saving post to a seed file.
+const seedUserData = require('./userData.json');
+const seedPostData = require('./postData.json');
+// const seedCommentData = require('./userData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await User.bulkCreate(seedUserData, {
+  const users = await User.bulkCreate(seedUserData, {
     individualHooks: true,
     returning: true,
   });
+
+  for ( const post of seedPostData) {
+    await Post.create({
+      ...post,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    })
+  }
 
   process.exit(0);
 };
