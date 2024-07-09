@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../../models');
+const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all posts
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll()
+    const postData = await Post.findAll();
    
     res.status(200).json(postData);
   } catch (err) {
