@@ -3,7 +3,7 @@ const { User } = require('../../models');
 
 //adding get route to see if tables are being built
 // get all posts
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll()
       

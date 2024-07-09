@@ -44,8 +44,8 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}/api/postRoutes`));
 
-  app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}/controllers/api/postRoutes`));
+  // app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}/controllers/api/postRoutes`));
   
-  app.listen(PORT, () => console.log('Now listening'));
+  // app.listen(PORT, () => console.log('Now listening'));
 
 });
