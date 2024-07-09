@@ -11,7 +11,9 @@ const seedDatabase = async () => {
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
+  
   });
+console.log('tables seeded AAA');
 
   for ( const post of postData) {
     await Post.create({
@@ -19,6 +21,8 @@ const seedDatabase = async () => {
       user_id: users[Math.floor(Math.random() * users.length)].id,
     })
   }
+
+  console.log('tables seeded BBB'),
 
   process.exit(0);
 };

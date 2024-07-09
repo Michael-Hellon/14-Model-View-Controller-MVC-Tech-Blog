@@ -5,9 +5,14 @@ const withAuth = require('../utils/auth');
 // similar to mod 13 - get all post
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const postDataData = await Post.findAll({
-      include: [User],
+    // Get all posts and JOIN with user data
+    const postData = await Post.findAll({
+      include: [
+        {
+        model: [User],
+        attributes: [ 'name']
+        }
+      ]
     });
 
     // Serialize data so the template can read it
@@ -32,20 +37,14 @@ router.get('/post/:id', async (req, res) => {
       },
       include: [
         {
-          model: Comment,
-          include: {
-            model: User,
-            attributes: ["name"],
-          },
-        },        
-        {
           model: User,
-          attributes: ['name'],
-        },
+          attributes: ["name"],
+        },        
       ],
     });
+
     if (postData) {
-    const project = projectData.get({ plain: true });
+    const post = postData.get({ plain: true });
     res.render('post by id:', {
       ...post,
       logged_in: req.session.logged_in

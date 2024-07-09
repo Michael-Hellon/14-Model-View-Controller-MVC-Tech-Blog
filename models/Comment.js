@@ -1,3 +1,6 @@
+
+// starting to think I don't need this. All contained in Post.js
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
