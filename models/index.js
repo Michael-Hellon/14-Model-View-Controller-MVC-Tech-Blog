@@ -13,7 +13,6 @@ User.hasMany(Post, {
 // Post belongs to User
 Post.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
   });
 
 // going to remove any thing having to do with COMMENTS
