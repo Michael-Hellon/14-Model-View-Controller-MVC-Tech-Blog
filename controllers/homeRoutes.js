@@ -7,12 +7,8 @@ router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
-      include: [
-        {
-        model: [User],
-        attributes: [ 'name']
-        }
-      ]
+      include: [User],
+
     });
 
     // Serialize data so the template can read it
@@ -20,7 +16,7 @@ router.get('/', async (req, res) => {
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      posts, 
+      post, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -37,15 +33,22 @@ router.get('/post/:id', async (req, res) => {
       },
       include: [
         {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ["name"],
+          },
+        },
+        {
           model: User,
           attributes: ["name"],
-        },        
+        },
       ],
     });
 
     if (postData) {
     const post = postData.get({ plain: true });
-    res.render('post by id:', {
+    res.render('post-id:', {
       ...post,
       logged_in: req.session.logged_in
     });
