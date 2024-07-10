@@ -1,6 +1,6 @@
 const User = require('./User');
 const Post = require('./Post');
-// const Comment = require('./Comment');
+const Comment = require('./Comment');
 
 // Referenced MOD 13 One-to-one, One-to-Many exercise
 
@@ -13,10 +13,10 @@ User.hasMany(Post, {
 // Post belongs to User
 Post.belongsTo(User, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE'
   });
 
-// going to remove any thing having to do with COMMENTS
-/*
+
 // likewise, User has many comment
 User.hasMany(Comment, {
   foreignKey: 'user_id',
@@ -38,5 +38,5 @@ Comment.belongsTo(Post, {
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
   });
-*/
-module.exports = { User, Post };
+
+module.exports = { User, Post, Comment };
