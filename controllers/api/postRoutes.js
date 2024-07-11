@@ -37,7 +37,7 @@ router.put('/:id',withAuth, async (req, res) => {
       },
     });
 
-    if (postData) {
+    if (!postData) {
       res.status(200).json(postData);
     } else {
       res.status(404).json({message: "No Post found, trey again."});

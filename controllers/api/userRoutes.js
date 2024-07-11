@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'No user found, please try again' });
+        .json({ message: 'Wrong User Name, please try again' });
       return;
     }
 
@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'No user found, please try again' });
+        .json({ message: 'Wrong Password, please try again' });
       return;
     }
 
