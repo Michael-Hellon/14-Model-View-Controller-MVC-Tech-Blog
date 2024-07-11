@@ -1,0 +1,33 @@
+const { Comment } = require("../models");
+
+const commentData = [
+
+    {
+        body: "Comment 1",
+        date_created: "April 25, 2024",
+        user_id: 1,
+        blogPost_id: 1
+    },
+    {
+        body: "Comment 2",
+        date_created: "May 2, 2024",
+        user_id: 2,
+        blogPost_id: 2
+    },
+    {
+        body: "Comment 3",
+        date_created: "May 15, 2024",
+        user_id: 3,
+        blogPost_id: 3
+    },
+    {
+        body: "Comment 4",
+        date_created: "July 8, 2024",
+        user_id: 1,
+        blogPost_id: 4
+    },
+];
+
+    const seedComments = () => Comment.bulkCreate(commentData);
+
+module.exports = seedComments;
