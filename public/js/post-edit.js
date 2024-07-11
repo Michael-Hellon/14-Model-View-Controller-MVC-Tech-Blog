@@ -23,4 +23,6 @@ const editFormHandler = async (event) => {
     }
   };
   
-  document.querySelector("#update").addEventListener("click", editFormHandler);
+  document
+  .querySelector("#update")
+  .addEventListener("click", editFormHandler);
