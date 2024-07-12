@@ -28,6 +28,6 @@ const commentData = [
     },
 ];
 
-    const seedComments = () => Comment.bulkCreate(commentData);
+    const seedComment = () => Comment.bulkCreate(commentData);
 
-module.exports = seedComments;
+module.exports = seedComment;
