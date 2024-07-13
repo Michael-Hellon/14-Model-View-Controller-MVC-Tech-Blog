@@ -20,8 +20,10 @@ const deleteFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard/");
     } else {
-      alert(response.statusText);
+      alert('Unable to delete post');
     }
   };
   
-  document.querySelector("#delete").addEventListener("click", deleteFormHandler);
+  document
+    .querySelector("#delete")
+    .addEventListener("click", deleteFormHandler);
