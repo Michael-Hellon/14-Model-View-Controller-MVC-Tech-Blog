@@ -14,12 +14,12 @@ Post.init(
     title: {
       type: DataTypes.STRING(30),
       allowNull: false,
-      unique: true,
+
     },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+
     },
     date_created: {
       type: DataTypes.DATE,

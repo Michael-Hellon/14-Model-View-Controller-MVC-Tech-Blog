@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser 
       document.location.replace('/dashboard');
     } else {
-      alert('UserName or email not found');
+      alert('User name or email not found');
     }
   }
 };

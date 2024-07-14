@@ -5,18 +5,45 @@ const { User } = require('../../models');
 // get all posts
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll();
-      
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+    });
+
     res.status(200).json(userData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  // find a single user by its `id`
+  // be sure to include its associated elements
+  try {
+    const userData = await User.findByPk(req.params.id,{
+      attributes: { exclude: ['password'] },
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No products found!' });
+      return;
+    }
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 // route to sign up new users
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    // create new user obj to store new user info
+    const newUser = new User()
+    newUser.name = req.body.name;
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
+
+    const userData = await newUser.save();
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -25,19 +52,19 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: 'Unable to sign up user at this time' });
   }
 });
 
 // route to login users
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { name: req.body.name } });
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Wrong User Name, please try again' });
+        .json({ message: 'Wrong User email, please try again' });
       return;
     }
 
