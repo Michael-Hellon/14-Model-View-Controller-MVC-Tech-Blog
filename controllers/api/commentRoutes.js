@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Comment, Post, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// get all Comments
+// get all Comments - WORKS
 router.get('/', async (req, res) => {
   try {
     const commentData = await Comment.findAll({
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// get Comment by id
+// get Comment by id - WORKS
 router.get('/:id', async (req, res) => {
   try {
     const commentData = await Comment.findByPk(req.params.id, {

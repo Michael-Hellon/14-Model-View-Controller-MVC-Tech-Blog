@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 //adding get route to see if tables are being built
-// get all posts
+// get all posts  - WORKS
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get user by id - WORKS
 router.get('/:id', async (req, res) => {
   // find a single user by its `id`
   // be sure to include its associated elements

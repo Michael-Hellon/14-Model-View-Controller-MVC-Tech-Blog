@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all posts - this works
+// get all posts - WORKS
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// get one post
+// get one post - WORKS
 router.get('/:id', async (req, res) => {
   // find a single post by its `id`
   // be sure to include its associated User and Comments
