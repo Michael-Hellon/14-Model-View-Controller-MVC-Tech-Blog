@@ -24,6 +24,11 @@ const loginFormHandler = async (event) => {
   }
 };
 
+// line 8 of login.handlebars
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
+
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
