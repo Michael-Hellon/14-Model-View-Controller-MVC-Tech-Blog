@@ -1,3 +1,4 @@
+const express = require('express');
 const router = require('express').Router();
 const { User } = require('../../models');
 
@@ -40,10 +41,10 @@ router.post('/signup', async (req, res) => {
   try {
     // create new user obj to store new user info
     const newUser = new User()
-    newUser.name = req.body.name;
-    newUser.email = req.body.email;
+    newUser.name = req.body.name,
+    newUser.email = req.body.email,
     newUser.password = req.body.password;
-
+    
     const userData = await newUser.save();
 
     req.session.save(() => {
@@ -94,7 +95,7 @@ router.post('/login', async (req, res) => {
 
 // logout route
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (!req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });

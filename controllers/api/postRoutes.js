@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(postData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: 'No post found for that id!' });
   }
 });
 
@@ -94,7 +94,7 @@ router.put('/:id',withAuth, async (req, res) => {
 // delete a post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    // first we have to delete - destroy the comment 
+    // First, delete the comment associated with the post
     await Comment.destroy({
       where: {
         post_id: req.params.id,
@@ -102,7 +102,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       },
     });
 
-    // then we can delete the post
+    // Then delete the post itself
     const postDelete = await Post.destroy({
       where: {
         id: req.params.id,
@@ -114,10 +114,13 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json({postDelete});
+    res.status(200).json({ postDelete });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
 
 module.exports = router;
