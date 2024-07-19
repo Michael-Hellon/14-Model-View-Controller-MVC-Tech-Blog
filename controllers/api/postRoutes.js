@@ -86,7 +86,7 @@ router.put('/:id',withAuth, async (req, res) => {
     }
       res.status(200).json(updatePost);
   } catch (err) {
-      res.status(404).json({message: "Unable to update post!"});
+      res.status(50).json(err);
     }
   }); 
 
@@ -98,7 +98,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     await Comment.destroy({
       where: {
         post_id: req.params.id,
-        // user_id: req.session.user_id,
       },
     });
 
@@ -114,13 +113,10 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json({ postDelete });
+    res.status(200).json({ message: 'Post deleted successfully' });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
-
 
 module.exports = router;

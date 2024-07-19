@@ -7,13 +7,10 @@ const withAuth = require('../utils/auth');
 
 // similar to mod 13 - get all post
 // Get all posts
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     //Get all posts where the current user is logged in
     const postData = await Post.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
       include: [
         {
           model: User,
@@ -35,6 +32,10 @@ router.get('/post/:id', withAuth, async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
+          model: User,
+          attributes: ["name"],
+        },        
+        {
           model: Comment,
           include: [
             {
@@ -43,10 +44,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
             },
           ],  
         },
-        {
-          model: User,
-          attributes: ["name"],
-        }
       ],
     });
     
@@ -66,16 +63,17 @@ router.get("/post-edit/:id", async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
+          model: User,
+          attributes: ["name"]
+        },
+        {
           model: Comment,
           include: [{
             model: User,
             attributes: ["name"]
           }],
         },
-        {
-          model: User,
-          attributes: ["name"]
-        },
+
       ],
     });
 
@@ -94,7 +92,7 @@ router.get("/post-edit/:id", async (req, res) => {
 // route to login
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('dashboard');
     return;
   }
 
@@ -103,7 +101,7 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('dashboard');
     return;
   }
 
@@ -118,7 +116,32 @@ router.get('/post-new', (req, res) => {
     return;
   }
 
-  res.redirect('login')
+  res.redirect('/login')
 });
+
+//
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          attributes: ['name']
+        }
+      ],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', {
+      posts,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

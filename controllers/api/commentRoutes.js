@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 router.post("/", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
-      comment: req.body.comment_content,
+      comment: req.body.comment,
       post_id: req.body.post_id,
       user_id: req.session.user_id,
     });
@@ -70,7 +70,7 @@ router.post("/", withAuth, async (req, res) => {
 //   });
 
 // delete a comment 
-router.delete('/:id',async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   // delete one comment by its `id` value
   try {
     const commentDelete = await Comment.destroy({
