@@ -3,18 +3,18 @@ const { Post } = require("../models");
 const postData = [
 
     {
-        title: "Growing Zucchini",
-        content: "Plant the seeds 1/2 an inch below the surface of a small hills in your garden. They grow best in direct sunlight.",
+        title: "AI",
+        content: "With advances in AI and Machine Learning over the last several year, I see AI as a Pandora's Box, but more evil than good.",
         user_id : 1 
     },
     {
-        title: "Brewing Cider",
-        content: "Mix 13, 12oz containers of frozen apple juice with 5 gallons of 80-90 degree F water. Then add 5 pounds of sugar and one packet of champagne yeast, yield about 25-30 750 ml bottles of 15-18% ABC apple cider/wine",
+        title: "Quantum Computing",
+        content: "As quantum computing becomes more advanced, their increased speed will help scientist to peel back the mysteries of the universe.",
         user_id : 2 
     },
     {
-        title: "Building a Deck",
-        content: "First, make sure you get a building permit from the proper authorities. Otherwise this causes delays and possible fines.",
+        title: "Minecraft Mods",
+        content: "What is your favorite Minecraft Mod, or what mod do you wish was available? Mine was the dinosaur mod that allowed you to create, hatch and grow dinosaurs",
         user_id: 3
     },
     {
