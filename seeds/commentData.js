@@ -8,7 +8,7 @@ const commentData = [
         post_id: 1
     },
     {
-        comment: "Maybe QC will help develop a FTL travel and a wormhole based transport system .",
+        comment: "Maybe QC will help develop FTL travel and a wormhole based transport system .",
         user_id: 4,
         post_id: 2
     },
@@ -20,7 +20,7 @@ const commentData = [
     {
         comment: "Nvidia is bad news.",
         user_id: 5,
-        post_id: 3
+        post_id: 4
     },
 ];
 
