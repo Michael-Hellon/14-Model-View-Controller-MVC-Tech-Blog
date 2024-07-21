@@ -51,7 +51,7 @@
 
   ## Credits
   I completed this project myself and used MOD 14’s mini-project as a guideline for this project. I used several page from Handlebars  https://handlebarsjs.com   I also used several pages from MDN Web Docs https://developer.mozilla.org/en-US/  and W3 schools https://www.w3schools.com
-        
+  
   ## License
 
   To read more about the MIT license, click here ==> [License: MIT](https://opensource.org/licenses/MIT).
