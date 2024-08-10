@@ -40,21 +40,26 @@ router.get('/:id', async (req, res) => {
 router.post('/signup', async (req, res) => {
   try {
     // create new user obj to store new user info
-    const newUser = new User()
-    newUser.name = req.body.name,
-    newUser.email = req.body.email,
+    const newUser = new User.create()
+    newUser.name = req.body.name;
+    newUser.email = req.body.email;
     newUser.password = req.body.password;
     
+
     const userData = await newUser.save();
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
-      res.status(200).json(userData);
+      
+      res.status(200).json(newUser);
+      res.status(200).json({ message: `New user: ${User.name} has been created`});
     });
+    console.log(`UserRoute LINE 57User name: ${User.name}, email: ${User.email}, password: ${newUser.password} created`);
+    alert(`User name: ${User.name}, email: ${User.email}, password: ${User.password} created`);
+
   } catch (err) {
-    res.status(400).json({ message: 'Unable to sign up user at this time' });
+    res.status(500).json({ message: `UR line 61 New user: ${User.name} has been created.  Unable to sign up user at this time` });
   }
 });
 
