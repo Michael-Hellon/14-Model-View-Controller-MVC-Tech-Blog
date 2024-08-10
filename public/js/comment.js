@@ -18,10 +18,12 @@ const deleteFormHandler = async (event) => {
     });
   
     if (response.ok) {
-      document.location.replace("/dashboard/");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
   };
   
-  document.querySelector("#delete").addEventListener("click", deleteFormHandler);
+  document
+    .querySelector("#delete")
+    .addEventListener("click", deleteFormHandler);

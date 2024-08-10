@@ -1,8 +1,8 @@
-const editFormHandler = async (event) => {
+const updatePostFormHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector("#title").value.trim();
-    const content = document.querySelector("#content").value.trim();
+    const title = document.querySelector("#title-update-post").value.trim();
+    const content = document.querySelector("#update-content-post").value.trim();
   
     const id = window.location.toString().split("/")[
       window.location.toString().split("/").length - 1
@@ -23,6 +23,6 @@ const editFormHandler = async (event) => {
     }
   };
   
-  document
+document
   .querySelector("#update")
-  .addEventListener("click", editFormHandler);
+  .addEventListener("click", updatePostFormHandler);
