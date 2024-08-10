@@ -37,29 +37,33 @@ router.get('/:id', async (req, res) => {
 });
 
 // route to sign up new users
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     // create new user obj to store new user info
-    const newUser = new User.create()
-    newUser.name = req.body.name;
-    newUser.email = req.body.email;
-    newUser.password = req.body.password;
+    const newUser = await User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
     
-
-    const userData = await newUser.save();
+    });
+    // console.log('newUser.name', newUser.name);
+    
+    // const userData = await newUser.save();
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = newUser.id;
+      req.session.name = newUser.name;
+      req.session.email = newUser.email;
+      req.session.password = newUser.password;
       req.session.logged_in = true;
       
       res.status(200).json(newUser);
-      res.status(200).json({ message: `New user: ${User.name} has been created`});
+      console.log(newUser);
     });
-    console.log(`UserRoute LINE 57User name: ${User.name}, email: ${User.email}, password: ${newUser.password} created`);
-    alert(`User name: ${User.name}, email: ${User.email}, password: ${User.password} created`);
-
+    console.log(`UserRoute LINE 57User name: created`);
   } catch (err) {
-    res.status(500).json({ message: `UR line 61 New user: ${User.name} has been created.  Unable to sign up user at this time` });
+    console.log(err);
+    res.status(500).json({ message: `UR line 61 New user, Unable to sign up user at this time` });
   }
 });
 
