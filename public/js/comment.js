@@ -1,29 +1,26 @@
-const deleteFormHandler = async (event) => {
+const newCommentFormHandler = async (event) => {
     event.preventDefault();
   
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
-  
-    console.log(id);
-  
-    const response = await fetch(`/api/posts/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify({
-        post_id: id,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert(response.statusText);
-    }
-  };
-  
-  document
-    .querySelector("#delete")
-    .addEventListener("click", deleteFormHandler);
+    const id = parseInt(window.location.pathname.split('/').pop());
+
+    const commentContent = document.querySelector('#new-comment').value.trim();
+    
+    if (commentContent) {
+      const response = await fetch(`/api/comments`, {
+          method: 'POST',
+          body: JSON.stringify({ comment: commentContent, post_id }),
+          headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        // setTimeout(() => document.location.reload(), 200);
+        document.location.replace('/dashboard');
+      } else {
+          alert('Could not create a comment to post.');
+      }
+  }
+};
+
+document
+  .querySelector('.new-comment-form')
+  .addEventListener('submit', newCommentFormHandler);

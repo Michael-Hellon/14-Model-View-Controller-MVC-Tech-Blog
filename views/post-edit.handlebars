@@ -1,18 +1,16 @@
 <h2>Edit or Delete Post</h2>
-<form class="card-body edit-post-form">
-    <div class="form-row">
+<form class="edit-post-form">
+    <div class="card-body form-row">
         <label for="title-update-post" class="form-label">Title</label>
-        <input name="post-title" id="title-update-post" type="text" value="{{post.title}}" class="form-input form-control" />
+        <input class="form-input form-control" name="post-title" id="title-update-post" type="text" value="{{title}}"  />
     </div>
 
     <div class="form-row">
         <label class="form-label" for="update-content-post">Content</label>
-        <input name="content" id="update-content-post" type="text" value="{{post.content}}" class="form-input form-control" />
+        <input name="content" id="update-content-post" type="text"  class="form-input form-control" value="{{content}}"></textarea>
     </div>
     <button id="update" type="submit" class="btn btn-primary">UPDATE POST</button>
     <button id="delete" type="submit" class="btn delete-post-btn btn-primary">DELETE POST</button>
 </form>
 
 
-<script src="/js/post-edit.js"></script>
-<script src="/js/delete-post.js"></script>

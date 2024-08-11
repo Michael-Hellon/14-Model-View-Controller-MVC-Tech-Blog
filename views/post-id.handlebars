@@ -25,20 +25,19 @@
                 </div>
             </div>
         </div>
-        {{/each}}
-    </div>
+    </div>    
+    {{/each}}
 </div>
 
 
-<div class="comment-container">
-    <form class="card-body comment-form" id="comment-form">
+<div class="comment-container card-body">
+    <form class="new-comment-form" id="comment-form">
         <div class="form-row">
             <label class="form-label">Comment</label>
-       
-            <input id="comment" name="comment-body" class="form-input  form-control" />
+              <textarea id"new-comment-form" class="form-input form-control"></textarea> 
         </div>
         <button type="submit" class="btn btn-primary">SUBMIT</button>
     </form>
-</div>
+
 {{/if}}
-<script src="/js/comment.js"></script>
+</div>

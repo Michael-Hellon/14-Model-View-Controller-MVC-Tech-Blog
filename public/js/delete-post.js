@@ -1,4 +1,4 @@
-const deleteFormHandler = async (event) => {
+const deletePostFormHandler = async (event) => {
     event.preventDefault();
   
     const id = window.location.toString().split("/")[
@@ -26,4 +26,4 @@ const deleteFormHandler = async (event) => {
   
   document
     .querySelector("#delete")
-    .addEventListener("click", deleteFormHandler);
+    .addEventListener("click", deletePostFormHandler);

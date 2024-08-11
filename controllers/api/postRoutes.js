@@ -86,7 +86,7 @@ router.put('/:id',withAuth, async (req, res) => {
     }
       res.status(200).json(updatePost);
   } catch (err) {
-      res.status(50).json(err);
+      res.status(500).json(err);
     }
   }); 
 

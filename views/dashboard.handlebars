@@ -1,10 +1,11 @@
+
 <h2>Michael's Blog Posts</h2>
 <div class="flex flex-col">
 <button type="submit" class="btn btn-primary"><a href="/post-new">ADD NEW POST</a></button>
 </div>
 <section>
-
-    {{#each posts as |post|}}
+<h2>Your Blog Posts</h2>
+    {{#each posts}}
     <article class="post">
         <div class="container-fluid dashboard-container">
             <div class="card-header dashboard-post">
@@ -12,7 +13,11 @@
                 <div class="card-body post-body">
                     <p class="card-body post-content">{{content}}</p>
                     <p class="card-text post-author">Posted by <span class="post-username">{{user.name}}</span> on
-                        {{format_date post.date_created}}</p>
+                        {{format_date date_created}}</p>
+                </div>
+                <div>
+                    <a href="/post-edit/{{id}}" class="btn btn-warning">Edit Post</a>
+                    <button class="btn btn-danger delete" data-post-id="{{id}}">Delete</button>
                 </div>
             </div>
         </div>
