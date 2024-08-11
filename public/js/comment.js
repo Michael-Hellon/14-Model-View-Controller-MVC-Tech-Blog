@@ -1,9 +1,9 @@
 const newCommentFormHandler = async (event) => {
     event.preventDefault();
   
-    const id = parseInt(window.location.pathname.split('/').pop());
+    const post_id = parseInt(window.location.pathname.split('/').pop());
 
-    const commentContent = document.querySelector('#new-comment').value.trim();
+    const commentContent = document.querySelector('.comment-form-new').value.trim();
     
     if (commentContent) {
       const response = await fetch(`/api/comments`, {
@@ -13,7 +13,7 @@ const newCommentFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        // setTimeout(() => document.location.reload(), 200);
+        setTimeout(() => document.location.reload(), 200);
         document.location.replace('/dashboard');
       } else {
           alert('Could not create a comment to post.');
@@ -22,5 +22,5 @@ const newCommentFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.new-comment-form')
+  .querySelector('#submit')
   .addEventListener('submit', newCommentFormHandler);
