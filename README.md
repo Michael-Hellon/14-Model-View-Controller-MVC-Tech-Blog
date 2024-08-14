@@ -19,7 +19,6 @@
   - [Installation](#installation)
   - [Usage](#usage)
   - [Contribute](#contribute)
-  - [Test](#test)
   - [Questions](#questions)
   - [Credits](#credits)
   - [License](#license)
@@ -33,9 +32,6 @@
 
   ## Contribute
   If you would like to contribute to this project, please see below for my contact information.
-        
-  ## Test
-  There are no test conditions. If you have followed the steps properly you should see results like my screenshots in the assets/images folder.
 
   ## Questions
    My Github profile can be located at <https://github.com/Michael-Hellon/>
@@ -44,10 +40,22 @@
 
   You can email me with any questions at mwhellon@yahoo.com
 
-  ![screenshot](/public/images/screenshot1.png)
-  ![screenshot](/public/images/screenshot2.png)
-  ![screenshot](/public/images/screenshot3.png)
-  ![screenshot](/public/images/screenshot4.png)
+  Home Screen
+  ![screenshot](/public/images/Home%20screen.png)
+  Sign Up New User or Log In
+  ![screenshot](/public/images/Log%20In%20or%20Sign%20up.png)
+  Add New Post
+  ![screenshot](/public/images/Add%20New%20Post.png)
+  Create New Post
+  ![screenshot](/public/images/Create%20New%20post.png)
+  Update Or Delete Post
+  ![screenshot](/public/images/Update%20or%20Delete%20Post.png)
+  New Post Added
+  ![screenshot](/public/images/New%20post%20added.png)
+  Create new Comment
+  ![screenshot](/public/images/Create%20New%20Comment.png)
+  New Comment added
+  ![screenshot](/public/images/New%20comment%20added.png)
 
   ## Credits
   I completed this project myself and used MOD 14’s mini-project as a guideline for this project. I used several page from Handlebars  https://handlebarsjs.com   I also used several pages from MDN Web Docs https://developer.mozilla.org/en-US/  and W3 schools https://www.w3schools.com
