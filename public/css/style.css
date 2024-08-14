@@ -12,6 +12,27 @@ header, .project:not(:last-child) {
   margin: 20px;
 }
 
+.comment-post  {
+  box-sizing: border-box;
+  width: 1000px;
+  padding: auto;
+  margin: auto;
+}
+
+.new-comment-id-post  {
+  box-sizing: border-box;
+  width: 1000px;
+  padding: auto;
+  margin: auto;
+}
+.new-comment-post  {
+  box-sizing: border-box;
+  width: 90%;
+  border: 3px solid #2C3539;
+  padding: 50px;
+  margin: 20px;
+}
+
 .no-button {
   background: none;
   border: none;

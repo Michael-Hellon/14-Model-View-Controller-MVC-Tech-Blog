@@ -3,7 +3,8 @@ const newCommentFormHandler = async (event) => {
   
     const post_id = parseInt(window.location.pathname.split('/').pop());
 
-    const commentContent = document.querySelector('.comment-form-new').value.trim();
+    const commentContent = document.querySelector('#comment-new').value.trim();
+    // id="comment-new" - line 37 /post-id.HB 
     
     if (commentContent) {
       const response = await fetch(`/api/comments`, {
@@ -14,13 +15,13 @@ const newCommentFormHandler = async (event) => {
 
       if (response.ok) {
         setTimeout(() => document.location.reload(), 200);
-        document.location.replace('/dashboard');
+        // document.location.replace('/dashboard');
       } else {
-          alert('Could not create a comment to post.');
+          alert('Could not create a comment to post, MAN!!!');
       }
   }
 };
 
 document
-  .querySelector('#submit')
+  .querySelector('.comment-new-form')
   .addEventListener('submit', newCommentFormHandler);

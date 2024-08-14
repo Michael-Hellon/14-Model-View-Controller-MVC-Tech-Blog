@@ -40,8 +40,8 @@ const deletePostFormHandler = async (event) => {
 }
   
 document
-  .querySelector('#update')
-  .addEventListener('click', updatePostFormHandler);
+  .querySelector('.edit-post-form')
+  .addEventListener('submit', updatePostFormHandler);
 
 document
   .querySelector('#delete')

@@ -1,6 +1,6 @@
 <article class="post">
-    <div class="container">
-        <div class="card-header dashboard-post">
+    <div class="dashboard-post">
+        <div class="card-header ">
             <h4 class="card-title post-title">{{title}}</h4>
             <div class="card-body post-body">
                 <p class="card-body post-content">{{content}}</p>
@@ -11,11 +11,11 @@
     </div>
 </article>
 {{#if logged_in}}
-<div class="container">
+<div class="comment-post">
     <div class="comments">
         <h4 class="comment-list">Comments</h4>
         {{#each comments}}
-        <div class="card post comment-box">
+        <div class="comment-post card post comment-box">
             <div class="card-body post-body">
                 <div class="card-text comment-text">
                     {{comment}}
@@ -29,12 +29,11 @@
     {{/each}}
 </div>
 
-
-<div class="comment-container card-body">
-    <form class="comment-form-new" id="comment-form">
+<div class="new-comment-id-post card-body">
+    <form class="comment-new-form" id="comment-form">
         <div class="form-row">
             <label class="form-label">Comment</label>
-              <textarea id"comment-new" class="form-input form-control"></textarea> 
+              <textarea id="comment-new" class="form-input form-control"></textarea> 
         </div>
         <button id="submit" type="submit" class="btn btn-primary">SUBMIT</button>
     </form>
