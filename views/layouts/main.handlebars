@@ -13,10 +13,10 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
+  <h1 class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
         <a href="/">Tech Blog</a>
-      </h1>
+      
       <nav>
         <a class="link" href="/" title="Home">Home</a>
         <a class="link" href="/dashboard" title="Dashboard">Dashboard</a>
@@ -25,7 +25,7 @@
 
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a class="link" href="/" id="logout">logout</a>
+        <a class="link" href="/" id="logout">Logout</a>
         {{else}}
         <a class="link" href="/login" title="Login">Login</a>
         {{/if}}
@@ -38,7 +38,7 @@
     <footer>
       
     </footer>
-  </div>
+  </h1>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
